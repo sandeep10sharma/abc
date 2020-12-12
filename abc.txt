@@ -1,0 +1,12 @@
+import { Pipe, PipeTransform } from '@angular/core';
+import { SlicePipe } from '@angular/common';
+
+@Pipe({
+  name: 'ellipsis'
+})
+export class EllipsisPipe extends SlicePipe implements PipeTransform {
+ transform(value, maxLength): any {
+    const suffix = value && value.length > maxLength ? "..." : "";
+    return super.transform(value, 0, maxLength) + suffix;
+  }
+}
